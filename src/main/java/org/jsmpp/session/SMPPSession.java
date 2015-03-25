@@ -571,7 +571,8 @@ public class SMPPSession extends AbstractSession implements ClientSession {
 	            unbindAndClose();
 	        } catch (SocketTimeoutException e) {
 	            notifyNoActivity();
-	        } catch (IOException e) {
+	        } catch (Throwable e) {
+	            logger.warn("Error occurred for receiving pdu", e);
 	            close();
 	        }
 	    }
